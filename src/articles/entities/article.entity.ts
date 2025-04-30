@@ -20,3 +20,4 @@ export class Article {
   @CreateDateColumn()
   createdAt: Date;
 }
+
