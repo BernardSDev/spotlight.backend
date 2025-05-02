@@ -6,6 +6,13 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors({
+    origin: [
+      'http://localhost:3000',
+      'https://spotlight-gray.vercel.app',
+    ],
+  });
+
   const config = new DocumentBuilder()
     .setTitle('SpotLight API')
     .setDescription('API description')
