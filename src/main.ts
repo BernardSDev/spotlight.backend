@@ -9,7 +9,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:3000',
-      'https://spotlight-gray.vercel.app',
+      'https://spotlight-frontend-jet.vercel.app/',
     ],
   });
 
