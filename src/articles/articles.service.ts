@@ -52,10 +52,10 @@ export class ArticlesService {
   }
 
   async search(query: string, page = 1, limit = 10): Promise<SearchResultDto[]> {
-    const [articles, total] = await this.articleRepository
+    const [articles] = await this.articleRepository
       .createQueryBuilder('article')
-      .where('article.title ILIKE :query', { query: `%${query}%` })
-      .orWhere('article.body ILIKE :query', { query: `%${query}%` })
+      .where('article.title LIKE :query', { query: `%${query}%` })
+      .orWhere('article.body LIKE :query', { query: `%${query}%` })
       .skip((page - 1) * limit)
       .take(limit)
       .getManyAndCount();

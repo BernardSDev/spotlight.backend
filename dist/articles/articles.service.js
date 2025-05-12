@@ -58,8 +58,8 @@ let ArticlesService = class ArticlesService {
     async search(query, page = 1, limit = 10) {
         const [articles, total] = await this.articleRepository
             .createQueryBuilder('article')
-            .where('article.title ILIKE :query', { query: `%${query}%` })
-            .orWhere('article.body ILIKE :query', { query: `%${query}%` })
+            .where('article.title LIKE :query', { query: `%${query}%` })
+            .orWhere('article.body LIKE :query', { query: `%${query}%` })
             .skip((page - 1) * limit)
             .take(limit)
             .getManyAndCount();
